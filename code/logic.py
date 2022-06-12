@@ -1,3 +1,4 @@
+from lib2to3.pytree import type_repr
 import pygame as pg
 from buttons import *
 
@@ -19,10 +20,17 @@ def getButton(index):
 
 def whenPress():
     index = press()
-    button = buttons[index]
-    
-    amount = button.price
+    try:
+        button = buttons[index]
 
-    if playerBank.enoughMoney(amount):
-        playerBank.withdraw(amount)
-        button.amount += 1
+        
+        amount = button.price
+        items = button.amount
+
+        if playerBank.enoughMoney(amount, items):
+            playerBank.withdraw(amount)
+            button.amount += 1
+
+    except TypeError:
+        pass
+
