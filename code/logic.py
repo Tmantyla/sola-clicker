@@ -1,6 +1,8 @@
 import pygame as pg
 from buttons import *
 
+playerBank = Account()
+
 def press():
     mousePos = pg.mouse.get_pos()
     for i in range(len(buttonPositions)):
@@ -16,4 +18,11 @@ def getButton(index):
 
 
 def whenPress():
-    pass      
+    index = press()
+    button = buttons[index]
+    
+    amount = button.price
+
+    if playerBank.enoughMoney(amount):
+        playerBank.withdraw(amount)
+        button.amount += 1

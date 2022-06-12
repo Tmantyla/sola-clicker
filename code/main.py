@@ -19,10 +19,12 @@ while True:
             pressEvent = True
             
     if pressEvent:
-        print(name)
+        whenPress()
         pressEvent = False
 
     drawButtons()
+    playerBank.drawBalance()
+    playerBank.tick()
 
     clock.tick(60)
 
