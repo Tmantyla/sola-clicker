@@ -6,9 +6,9 @@ WHITE = 255, 255, 255
 
 BLACK = 0, 0, 0
 
-size = 1366,768
+size = 500, 500
 
-fontSize = 24
+fontSize = size[0] // 50
 
 
 gap = size[1] // 23

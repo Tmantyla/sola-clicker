@@ -33,14 +33,6 @@ prices = [
     100000000,
 ]
 
-types = [
-    "clicker",
-    "clickUpgrade",
-    "clickUpgrade",
-    "clickUpgrade",
-    "clickUpgrade",
-]
-
 buttons = []
 
 for i in range(len(buttonPositions)):
@@ -50,7 +42,6 @@ for i in range(len(buttonPositions)):
     images[i][0], 
     images[i][1], 
     prices[i], 
-    types[i],
     names
 ))
 

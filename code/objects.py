@@ -30,7 +30,7 @@ class Account():
         
 
 class Button():
-    def __init__(self, id, topLeft, size, img, darkimg, price, type, names):
+    def __init__(self, id, topLeft, size, img, darkimg, price, names):
         self.amount = 0
 
         self.id = id
@@ -38,7 +38,6 @@ class Button():
         self.topLeft = topLeft
         self.width, self.height = size
         self.price = price
-        self.type = type
         
         self.image = pg.transform.scale(pg.image.load(img), (self.width, self.height))
         self.darkImage = pg.transform.scale(pg.image.load(darkimg), (self.width, self.height))
