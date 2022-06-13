@@ -9,12 +9,12 @@ class Account():
     
     def enoughMoney(self, amount, items):
         if self.balance >= amount:
-            print("You do have {} sola".format(amount))
-            print("You now have {} of this".format(items))
+            print(f"You do have {amount} sola")
+            print(f"You now have {items} of this")
             return True
         else:
-            print("You don't have {} sola".format(amount))
-            print("You now have {} of this".format(items))
+            print(f"You don't have {amount} sola")
+            print(f"You now have {items} of this")
             return False
     
     def withdraw(self, amount):
