@@ -1,4 +1,3 @@
-from lib2to3.pytree import type_repr
 import pygame as pg
 from buttons import *
 

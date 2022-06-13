@@ -2,19 +2,19 @@ from objects import Button, Account
 from style import *
 
 buttonSizes = [
-    [100, 200],
-    [100, 50], 
-    [100, 50],
-    [100, 50],
-    [100, 50],
+    [buttonWidth * 0.4, buttonHeight // 0.375],
+    [buttonWidth, buttonHeight], 
+    [buttonWidth, buttonHeight],
+    [buttonWidth, buttonHeight],
+    [buttonWidth, buttonHeight],
 ]
 
 buttonPositions = [
     [(size[0] - buttonSizes[0][0]) / 2 , (size[1] - buttonSizes[0][1]) / 2],
-    [100, 10], 
-    [100, 110],
-    [100, 210],
-    [100, 310],
+    [gap, gap], 
+    [gap, 2 * gap + buttonHeight],
+    [gap, 3 * gap + 2* buttonHeight],
+    [gap, 4 * gap + 3 * buttonHeight],
 ]
 
 names = [
