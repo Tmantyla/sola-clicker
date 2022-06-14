@@ -22,14 +22,28 @@ def whenPress():
     try:
         button = buttons[index]
 
-        
-        amount = button.price
-        items = button.amount
+        if button.type == 'clicker':
+            amount = button.amount
+            
+            playerBank.balance += amount
 
-        if playerBank.enoughMoney(amount, items):
-            playerBank.withdraw(amount)
-            button.amount += 1
+        elif button.type == 'upgrade':
+            price = button.price
+            
+            if playerBank.enoughMoney(price):
+                if button.amount <= 1:
+                    button.amount += 1
+                else:
+                    pass
+                
+        elif button.type == "idle":
+            pass
 
     except TypeError:
         pass
 
+def calcIncr():
+    increase = 0
+    
+    return increase
+    

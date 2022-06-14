@@ -24,7 +24,7 @@ while True:
 
     drawButtons()
     playerBank.drawBalance()
-    playerBank.tick()
+    playerBank.tick(1)
 
     clock.tick(60)
 

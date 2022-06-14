@@ -7,21 +7,16 @@ class Account():
     def __init__(self):
         self.balance = 0
     
-    def enoughMoney(self, amount, items):
+    def enoughMoney(self, amount):
         if self.balance >= amount:
-            print(f"You do have {amount} sola")
-            print(f"You now have {items} of this")
             return True
         else:
-            print(f"You don't have {amount} sola")
-            print(f"You now have {items} of this")
             return False
     
     def withdraw(self, amount):
         self.balance -= amount
 
-    def tick(self):
-        increase = 10
+    def tick(self, increase):
         self.balance += increase
 
     def drawBalance(self):
@@ -32,7 +27,8 @@ class Account():
 class Button():
     def __init__(self, id, topLeft, size, img, darkimg, price, names):
         self.amount = 0
-
+        self.type = "undef"
+        
         self.id = id
         self.left, self.top = topLeft
         self.topLeft = topLeft
