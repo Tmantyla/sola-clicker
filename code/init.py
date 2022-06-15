@@ -16,8 +16,6 @@ buttonHeight = size[1] // 5.12
 
 buttonWidth = size[0] // 2.73
 
-pressEvent = False
-
 clock = pg.time.Clock()
 
 screen = pg.display.set_mode(size)

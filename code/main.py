@@ -4,29 +4,36 @@ import sys
 from style import *
 from logic import *
 
-while True:
-    screen.fill((BLACK))
-
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            sys.exit()
-        if event.type == pg.KEYDOWN:
-            if event.key == pg.K_ESCAPE:
-                sys.exit()
-        if event.type == pg.MOUSEBUTTONDOWN:
-            index = press()
-            name = getButton(index)
-            pressEvent = True
-            
-    if pressEvent:
-        whenPress()
+class Game():
+    def start(self):
         pressEvent = False
+        while True:
+            screen.fill((BLACK))
 
-    drawButtons()
-    drawInfo()
-    playerBank.drawBalance()
-    playerBank.tick(calcIncr())
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    sys.exit()
+                if event.type == pg.KEYDOWN:
+                    if event.key == pg.K_ESCAPE:
+                        sys.exit()
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    index = press()
+                    pressEvent = True
 
-    clock.tick(30)
+            if pressEvent:
+                whenPress()
+                pressEvent = False
 
-    pg.display.flip()
+            drawButtons()
+            drawInfo()
+            playerBank.drawBalance()
+            playerBank.tick(calcIncr())
+
+            clock.tick(30)
+
+            pg.display.flip()
+            
+game = Game()
+
+if __name__ == "__main__":
+    game.start()
