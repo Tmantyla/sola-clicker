@@ -20,7 +20,7 @@ class Account():
         self.balance += increase
 
     def drawBalance(self):
-        self.text = font.render(str(self.balance), True, WHITE)
+        self.text = font.render(f"{self.balance:,}", True, WHITE)
         screen.blit(self.text, (size[0] / 2, size[1] / 100))
         
 
@@ -28,6 +28,7 @@ class Button():
     def __init__(self, id, topLeft, size, img, darkimg, price, names):
         self.amount = 0
         self.type = "undef"
+        self.clickerAmount = 1
         
         self.id = id
         self.left, self.top = topLeft
@@ -48,14 +49,30 @@ class Button():
     def draw(self):
         if not self.isPressed:
             screen.blit(self.image, self.topLeft)
-        else:
-            if self.frames < 5:
+        elif self.type != "upgrade":
+            if self.frames < 2:
                 screen.blit(self.darkImage, self.topLeft)
                 self.frames += 1
             else:
                 self.frames = 0
                 self.isPressed = False
+        elif self.type == "upgrade" and self.amount != 1:
+            if self.frames < 2:
+                screen.blit(self.darkImage, self.topLeft)
+                self.frames += 1
+            else:
+                self.frames = 0
+                self.isPressed = False
+        else:
+            screen.blit(self.darkImage, self.topLeft)
+            
+        
+        
         screen.blit(self.text, (self.left + (self.width - self.text_width) / 2, self.top + (self.height - self.text_height) / 2))
+        
+        if self.type != "clicker":    
+            self.priceText = font.render(f"Price: {self.price:,}", True, BLACK)
+            screen.blit(self.priceText, (self.left, self.top))
         
     def press(self):
         self.isPressed = True
@@ -64,4 +81,4 @@ class Button():
         self.isPressed = False
     
     def increasePrice(self):
-        self.price *= 10
+        self.price *= 2

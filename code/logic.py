@@ -23,27 +23,56 @@ def whenPress():
         button = buttons[index]
 
         if button.type == 'clicker':
-            amount = button.amount
+            amount = button.clickerAmount
             
             playerBank.balance += amount
+
+        elif button.type == "idle":
+            price = button.price
+            
+            if playerBank.enoughMoney(price):
+                button.amount += 1
+                playerBank.withdraw(price)
+                button.increasePrice()
+                
+            
 
         elif button.type == 'upgrade':
             price = button.price
             
             if playerBank.enoughMoney(price):
                 if button.amount <= 1:
-                    button.amount += 1
-                else:
-                    pass
-                
-        elif button.type == "idle":
-            pass
+                    button.amount = 1
+                    buttons[0].clickerAmount *= 30
+                    playerBank.withdraw(price)
+                    button.price = 0
+
+        
 
     except TypeError:
         pass
 
 def calcIncr():
-    increase = 0
-    
+    increase = ( 
+        buttons[5].amount * 1
+        + buttons[6].amount * 200
+        + buttons[7].amount * 40000
+        + buttons[8].amount * 8000000
+    )
+        
     return increase
+
+def drawInfo():
+    pg.draw.rect(screen, (255, 0, 0), ((size[0] - buttonWidth * 0.5) // 2, size[1] // 24, buttonWidth * 0.5, buttonHeight // 2))
+    
+    clickPower = buttons[0].clickerAmount
+    clickPowerStr = f"{clickPower}"
+    clickPower = font.render(f"Click power: {clickPowerStr}", True, BLACK)
+    
+    solaPerSecond = 30 * calcIncr()
+    solaPerSecondStr = f"{solaPerSecond}"
+    solaPerSecond = font.render(f"SPS: {solaPerSecondStr}", True, BLACK)
+
+    screen.blit(clickPower, ((size[0] - buttonWidth * 0.5) // 2, size[1] // 24))
+    screen.blit(solaPerSecond, ((size[0] - buttonWidth * 0.5) // 2, size[1] // 13))
     

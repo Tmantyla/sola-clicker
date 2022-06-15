@@ -10,7 +10,6 @@ size = 1366, 768
 
 fontSize = size[0] // 50
 
-
 gap = size[1] // 23
 
 buttonHeight = size[1] // 5.12

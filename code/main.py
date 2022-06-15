@@ -23,9 +23,10 @@ while True:
         pressEvent = False
 
     drawButtons()
+    drawInfo()
     playerBank.drawBalance()
-    playerBank.tick(1)
+    playerBank.tick(calcIncr())
 
-    clock.tick(60)
+    clock.tick(30)
 
     pg.display.flip()
