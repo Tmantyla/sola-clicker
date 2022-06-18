@@ -56,6 +56,7 @@ class Button():
             else:
                 self.frames = 0
                 self.isPressed = False
+
         elif self.type == "upgrade" and self.amount != 1:
             if self.frames < 2:
                 screen.blit(self.darkImage, self.topLeft)
@@ -70,10 +71,14 @@ class Button():
         
         screen.blit(self.text, (self.left + (self.width - self.text_width) / 2, self.top + (self.height - self.text_height) / 2))
         
-        if self.type != "clicker":    
-            self.priceText = font.render(f"Price: {self.price:,}", True, BLACK)
-            screen.blit(self.priceText, (self.left, self.top))
-        
+        if self.type != "clicker":
+            try:
+                self.priceText = font.render(f"Price: {self.price:,}", True, BLACK)
+                screen.blit(self.priceText, (self.left, self.top))
+            except ValueError:
+                self.priceText = font.render(f"Bought", True, BLACK)
+                screen.blit(self.priceText, (self.left, self.top))
+
     def press(self):
         self.isPressed = True
     

@@ -43,9 +43,9 @@ def whenPress():
             if playerBank.enoughMoney(price):
                 if button.amount <= 1:
                     button.amount = 1
-                    buttons[0].clickerAmount *= 30
+                    buttons[0].clickerAmount *= 32
                     playerBank.withdraw(price)
-                    button.price = 0
+                    button.price *= 'n'
 
         
 
@@ -66,11 +66,11 @@ def drawInfo():
     pg.draw.rect(screen, (255, 0, 0), ((size[0] - buttonWidth * 0.5) // 2, size[1] // 24, buttonWidth * 0.5, buttonHeight // 2))
     
     clickPower = buttons[0].clickerAmount
-    clickPowerStr = f"{clickPower}"
-    clickPower = font.render(f"Click power: {clickPowerStr}", True, BLACK)
+    clickPowerStr = f"Click Power: {clickPower:,}"
+    clickPower = font.render(clickPowerStr, True, BLACK)
     
     solaPerSecond = 30 * calcIncr()
-    solaPerSecondStr = f"{solaPerSecond}"
+    solaPerSecondStr = f"SPS: {solaPerSecond:,}"
     solaPerSecond = font.render(f"SPS: {solaPerSecondStr}", True, BLACK)
 
     screen.blit(clickPower, ((size[0] - buttonWidth * 0.5) // 2, size[1] // 24))

@@ -17,7 +17,6 @@ class Game():
                     if event.key == pg.K_ESCAPE:
                         sys.exit()
                 if event.type == pg.MOUSEBUTTONDOWN:
-                    index = press()
                     pressEvent = True
 
             if pressEvent:
@@ -29,7 +28,7 @@ class Game():
             playerBank.drawBalance()
             playerBank.tick(calcIncr())
 
-            clock.tick(30)
+            clock.tick(60)
 
             pg.display.flip()
             

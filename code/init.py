@@ -6,7 +6,7 @@ WHITE = 255, 255, 255
 
 BLACK = 0, 0, 0
 
-size = 1366, 768
+size = 1980, 1080
 
 fontSize = size[0] // 50
 
