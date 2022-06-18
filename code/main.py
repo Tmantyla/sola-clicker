@@ -28,7 +28,7 @@ class Game():
             playerBank.drawBalance()
             playerBank.tick(calcIncr())
 
-            clock.tick(60)
+            clock.tick(30)
 
             pg.display.flip()
             
